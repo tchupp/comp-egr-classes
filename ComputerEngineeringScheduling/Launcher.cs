@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace ComputerEngineeringScheduling
 {
-    static class Program
+    static class Launcher
     {
         /// <summary>
         /// The main entry point for the application.
@@ -16,7 +16,10 @@ namespace ComputerEngineeringScheduling
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+
+            MainWindow window = new MainWindow();
+            Application.Run(window);
         }
     }
+
 }

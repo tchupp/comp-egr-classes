@@ -28,67 +28,72 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.allClassesLabel = new System.Windows.Forms.Label();
-            this.finishedClassesLabel = new System.Windows.Forms.Label();
-            this.availableClassesLabel = new System.Windows.Forms.Label();
-            this.allClassesList = new System.Windows.Forms.ListBox();
-            this.finishedClassesList = new System.Windows.Forms.ListBox();
-            this.availableClassesList = new System.Windows.Forms.ListBox();
+            this.allCourseLabel = new System.Windows.Forms.Label();
+            this.finishedCourseLabel = new System.Windows.Forms.Label();
+            this.availableCourseLabel = new System.Windows.Forms.Label();
+            this.allCourseList = new System.Windows.Forms.ListBox();
+            this.finishedCourseList = new System.Windows.Forms.ListBox();
+            this.availableCourseList = new System.Windows.Forms.ListBox();
             this.addButton = new System.Windows.Forms.Button();
             this.removeButton = new System.Windows.Forms.Button();
             this.infoLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // allClassesLabel
+            // allCourseLabel
             // 
-            this.allClassesLabel.AutoSize = true;
-            this.allClassesLabel.Location = new System.Drawing.Point(12, 9);
-            this.allClassesLabel.Name = "allClassesLabel";
-            this.allClassesLabel.Size = new System.Drawing.Size(97, 13);
-            this.allClassesLabel.TabIndex = 3;
-            this.allClassesLabel.Text = "All Avalible Classes";
+            this.allCourseLabel.AutoSize = true;
+            this.allCourseLabel.Location = new System.Drawing.Point(12, 9);
+            this.allCourseLabel.Name = "allCourseLabel";
+            this.allCourseLabel.Size = new System.Drawing.Size(99, 13);
+            this.allCourseLabel.TabIndex = 3;
+            this.allCourseLabel.Text = "All Avalible Courses";
             // 
-            // finishedClassesLabel
+            // finishedCourseLabel
             // 
-            this.finishedClassesLabel.AutoSize = true;
-            this.finishedClassesLabel.Location = new System.Drawing.Point(251, 9);
-            this.finishedClassesLabel.Name = "finishedClassesLabel";
-            this.finishedClassesLabel.Size = new System.Drawing.Size(77, 13);
-            this.finishedClassesLabel.TabIndex = 4;
-            this.finishedClassesLabel.Text = "Classes Taken";
+            this.finishedCourseLabel.AutoSize = true;
+            this.finishedCourseLabel.Location = new System.Drawing.Point(251, 9);
+            this.finishedCourseLabel.Name = "finishedCourseLabel";
+            this.finishedCourseLabel.Size = new System.Drawing.Size(79, 13);
+            this.finishedCourseLabel.TabIndex = 4;
+            this.finishedCourseLabel.Text = "Courses Taken";
             // 
-            // availableClassesLabel
+            // availableCourseLabel
             // 
-            this.availableClassesLabel.AutoSize = true;
-            this.availableClassesLabel.Location = new System.Drawing.Point(499, 9);
-            this.availableClassesLabel.Name = "availableClassesLabel";
-            this.availableClassesLabel.Size = new System.Drawing.Size(89, 13);
-            this.availableClassesLabel.TabIndex = 5;
-            this.availableClassesLabel.Text = "Available Classes";
+            this.availableCourseLabel.AutoSize = true;
+            this.availableCourseLabel.Location = new System.Drawing.Point(499, 9);
+            this.availableCourseLabel.Name = "availableCourseLabel";
+            this.availableCourseLabel.Size = new System.Drawing.Size(91, 13);
+            this.availableCourseLabel.TabIndex = 5;
+            this.availableCourseLabel.Text = "Available Courses";
             // 
-            // allClassesList
+            // allCourseList
             // 
-            this.allClassesList.FormattingEnabled = true;
-            this.allClassesList.Location = new System.Drawing.Point(15, 25);
-            this.allClassesList.Name = "allClassesList";
-            this.allClassesList.Size = new System.Drawing.Size(120, 290);
-            this.allClassesList.TabIndex = 0;
+            this.allCourseList.FormattingEnabled = true;
+            this.allCourseList.Items.AddRange(new object[] {
+            "CSE410",
+            "CSE220",
+            "CSE335",
+            "CSE420"});
+            this.allCourseList.Location = new System.Drawing.Point(15, 25);
+            this.allCourseList.Name = "allCourseList";
+            this.allCourseList.Size = new System.Drawing.Size(120, 290);
+            this.allCourseList.TabIndex = 0;
             // 
-            // finishedClassesList
+            // finishedCourseList
             // 
-            this.finishedClassesList.FormattingEnabled = true;
-            this.finishedClassesList.Location = new System.Drawing.Point(254, 25);
-            this.finishedClassesList.Name = "finishedClassesList";
-            this.finishedClassesList.Size = new System.Drawing.Size(120, 290);
-            this.finishedClassesList.TabIndex = 1;
+            this.finishedCourseList.FormattingEnabled = true;
+            this.finishedCourseList.Location = new System.Drawing.Point(254, 25);
+            this.finishedCourseList.Name = "finishedCourseList";
+            this.finishedCourseList.Size = new System.Drawing.Size(120, 290);
+            this.finishedCourseList.TabIndex = 1;
             // 
-            // availableClassesList
+            // availableCourseList
             // 
-            this.availableClassesList.FormattingEnabled = true;
-            this.availableClassesList.Location = new System.Drawing.Point(502, 25);
-            this.availableClassesList.Name = "availableClassesList";
-            this.availableClassesList.Size = new System.Drawing.Size(120, 290);
-            this.availableClassesList.TabIndex = 2;
+            this.availableCourseList.FormattingEnabled = true;
+            this.availableCourseList.Location = new System.Drawing.Point(502, 25);
+            this.availableCourseList.Name = "availableCourseList";
+            this.availableCourseList.Size = new System.Drawing.Size(120, 290);
+            this.availableCourseList.TabIndex = 2;
             // 
             // addButton
             // 
@@ -108,6 +113,7 @@
             this.removeButton.TabIndex = 7;
             this.removeButton.Text = "Remove";
             this.removeButton.UseVisualStyleBackColor = true;
+            this.removeButton.Click += new System.EventHandler(this.removeButton_Click);
             // 
             // infoLabel
             // 
@@ -126,12 +132,12 @@
             this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.removeButton);
             this.Controls.Add(this.addButton);
-            this.Controls.Add(this.availableClassesList);
-            this.Controls.Add(this.finishedClassesList);
-            this.Controls.Add(this.allClassesList);
-            this.Controls.Add(this.availableClassesLabel);
-            this.Controls.Add(this.finishedClassesLabel);
-            this.Controls.Add(this.allClassesLabel);
+            this.Controls.Add(this.availableCourseList);
+            this.Controls.Add(this.finishedCourseList);
+            this.Controls.Add(this.allCourseList);
+            this.Controls.Add(this.availableCourseLabel);
+            this.Controls.Add(this.finishedCourseLabel);
+            this.Controls.Add(this.allCourseLabel);
             this.Name = "MainWindow";
             this.Text = "MainWindow";
             this.ResumeLayout(false);
@@ -141,12 +147,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label allClassesLabel;
-        private System.Windows.Forms.Label finishedClassesLabel;
-        private System.Windows.Forms.Label availableClassesLabel;
-        private System.Windows.Forms.ListBox allClassesList;
-        private System.Windows.Forms.ListBox finishedClassesList;
-        private System.Windows.Forms.ListBox availableClassesList;
+        private System.Windows.Forms.Label allCourseLabel;
+        private System.Windows.Forms.Label finishedCourseLabel;
+        private System.Windows.Forms.Label availableCourseLabel;
+        private System.Windows.Forms.ListBox allCourseList;
+        private System.Windows.Forms.ListBox finishedCourseList;
+        private System.Windows.Forms.ListBox availableCourseList;
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button removeButton;
         private System.Windows.Forms.Label infoLabel;
