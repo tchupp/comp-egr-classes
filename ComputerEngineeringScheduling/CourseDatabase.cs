@@ -7,25 +7,31 @@ namespace ComputerEngineeringScheduling
 {
     internal class CourseDatabase
     {
-        private readonly List<Course> _courseList;
-        private readonly string _coursesFilePath;
+        private readonly List<Course> _allCourseList;
+        private readonly List<Course> _unfinishedCourseList;
+        private readonly List<Course> _finishedCourseList;
+        private readonly List<Course> _plannedCourseList;
 
         public CourseDatabase()
         {
-            _coursesFilePath =
-                "D:/Users/Theo/Documents/Visual Studio 2013/workspaceCSharp/ComputerEngineeringScheduling/ComputerEngineeringScheduling/courses.csv";
-            _courseList = new List<Course>();
-
-            PopulateDatabase();
+            _allCourseList = new List<Course>();
+            _unfinishedCourseList = new List<Course>();
+            _finishedCourseList = new List<Course>();
+            _plannedCourseList = new List<Course>();
         }
 
-        private void PopulateDatabase()
+        public void PopulateDatabaseFromFile(String filepath)
         {
-            StreamReader streamReader = new StreamReader(_coursesFilePath);
-            int x = 0;
+            // clears all current lists
+            _allCourseList.Clear();
+            _unfinishedCourseList.Clear();
+            _finishedCourseList.Clear();
+            _plannedCourseList.Clear();
+
+            // reads csv into database
+            StreamReader streamReader = new StreamReader(filepath);
             while (!streamReader.EndOfStream)
             {
-                x++;
                 string strline = streamReader.ReadLine();
                 string[] values = strline.Split(',');
 
@@ -41,16 +47,63 @@ namespace ComputerEngineeringScheduling
                     }
 
                     Course course = new Course(name, credits, prereqs);
-                    _courseList.Add(course);
+                    _allCourseList.Add(course);
+                    _unfinishedCourseList.Add(course);
                 }
             }
         }
 
-        public void UpdateAllCoursesList(ListBox allCourseList)
+        public void UpdateCourseList(ListBox unfinishedCourseList, ListBox finishedCourseList)
         {
-            foreach (Course course in _courseList)
+            // initially clear the lists
+            unfinishedCourseList.Items.Clear();
+            finishedCourseList.Items.Clear();
+
+            // add all the courses from _unfinishedCourseList
+            foreach (Course course in _unfinishedCourseList)
             {
-                allCourseList.Items.Add(course.GetCourseName());
+                unfinishedCourseList.Items.Add(course.GetCourseName());
+            }
+
+            // add all the courses from _finishedCourseList
+            foreach (Course course in _finishedCourseList)
+            {
+                finishedCourseList.Items.Add(course.GetCourseName());
+            }
+        }
+
+        // matches a course's name to the object in the allCourseList
+        private Course IdentifyCourse(String courseName)
+        {
+            foreach (Course course in _allCourseList)
+            {
+                if (course.GetCourseName().Equals(courseName))
+                {
+                    return course;
+                }
+            }
+            return new Course("", 0, new List<string>());
+        }
+
+        public void AddCourse(String courseName)
+        {
+            Course course = IdentifyCourse(courseName);
+
+            if (_allCourseList.Contains(course))
+            {
+                _finishedCourseList.Add(course);
+                _unfinishedCourseList.Remove(course);
+            }
+        }
+
+        public void RemoveCourse(String courseName)
+        {
+            Course course = IdentifyCourse(courseName);
+
+            if (_allCourseList.Contains(course))
+            {
+                _unfinishedCourseList.Add(course);
+                _finishedCourseList.Remove(course);
             }
         }
     }

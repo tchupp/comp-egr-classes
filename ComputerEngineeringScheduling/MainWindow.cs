@@ -5,28 +5,47 @@ namespace ComputerEngineeringScheduling
 {
     public partial class MainWindow : Form
     {
-        private CourseDatabase _database;
+        private readonly CourseDatabase _database;
+        private readonly OpenFileDialog _openFileDialog;
 
         public MainWindow()
         {
             _database = new CourseDatabase();
+            _openFileDialog = new OpenFileDialog();
             InitializeComponent();
-
-            _database.UpdateAllCoursesList(allCourseList);
         }
 
         private void addButton_Click(object sender, EventArgs e)
         {
-            object selected = allCourseList.SelectedItem;
-            allCourseList.Items.Remove(selected);
-            finishedCourseList.Items.Add(selected);
+            object selected = unfinishedCourseList.SelectedItem;
+            if (selected != null)
+            {
+                _database.AddCourse(selected.ToString());
+                _database.UpdateCourseList(unfinishedCourseList, finishedCourseList);
+            }
         }
 
         private void removeButton_Click(object sender, EventArgs e)
         {
             object selected = finishedCourseList.SelectedItem;
-            allCourseList.Items.Add(selected);
-            finishedCourseList.Items.Remove(selected);
+            if (selected != null)
+            {
+                _database.RemoveCourse(selected.ToString());
+                _database.UpdateCourseList(unfinishedCourseList, finishedCourseList);
+            }
+        }
+
+        private void updateCurrentFilePathButton_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = _openFileDialog.ShowDialog();
+            if (DialogResult.OK == dialogResult)
+            {
+                string selectedPath = _openFileDialog.FileName;
+                currentFilePathLabel.Text = selectedPath;
+
+                _database.PopulateDatabaseFromFile(selectedPath);
+                _database.UpdateCourseList(unfinishedCourseList, finishedCourseList);
+            }
         }
     }
 }
