@@ -1,24 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ComputerEngineeringScheduling;
 
 namespace ComputerEngineeringScheduling
 {
     public partial class MainWindow : Form
     {
-        private CourseDatabase database;
+        private CourseDatabase _database;
 
         public MainWindow()
         {
-            database = new CourseDatabase();
+            _database = new CourseDatabase();
             InitializeComponent();
+
+            _database.UpdateAllCoursesList(allCourseList);
         }
 
         private void addButton_Click(object sender, EventArgs e)

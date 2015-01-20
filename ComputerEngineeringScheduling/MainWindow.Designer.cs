@@ -69,11 +69,6 @@
             // allCourseList
             // 
             this.allCourseList.FormattingEnabled = true;
-            this.allCourseList.Items.AddRange(new object[] {
-            "CSE410",
-            "CSE220",
-            "CSE335",
-            "CSE420"});
             this.allCourseList.Location = new System.Drawing.Point(15, 25);
             this.allCourseList.Name = "allCourseList";
             this.allCourseList.Size = new System.Drawing.Size(120, 290);
